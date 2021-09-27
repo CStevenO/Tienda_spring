@@ -1,0 +1,46 @@
+package com.Steven.misiontic.Controllers;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.Steven.misiontic.modelo.ClienteModelo;
+import com.Steven.misiontic.services.ClienteService;
+
+@RestController
+@RequestMapping("/clientes")
+public class clienteController {
+	@Autowired
+	ClienteService clienteService;
+	
+	@GetMapping
+	public ArrayList<ClienteModelo> obtenerClientes(){
+		return clienteService.obtenerClientes();
+	}
+	
+	@PostMapping
+	public ClienteModelo crearCliente(@RequestBody ClienteModelo cliente) {
+		return clienteService.guardarCliente(cliente);
+	}
+	
+	@GetMapping(path = "{id}")
+	public Optional<ClienteModelo> obtenerPorId(@PathVariable("id") Long id){
+		return clienteService.obtenerPorId(id);
+	}
+	
+	@DeleteMapping(path = "{id}")
+	public String eliminarClientePorId(@PathVariable("id") Long id) {
+		boolean eliminado = clienteService.eliminarCliente(id);
+		
+		if(eliminado) return "Cliente Eliminado";
+		else return "Error Eliminado Cliente";
+	}
+}

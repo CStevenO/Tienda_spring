@@ -1,0 +1,79 @@
+package com.Steven.misiontic.modelo;
+
+import java.util.List;
+import java.util.Objects;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ventas")
+public class VentasModel {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@ManyToOne
+	private ClienteModelo cliente;
+	//el cascade se usa para no crear productos a traves de las ventas
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name= "venta_productos",
+		joinColumns = @JoinColumn(name="producto_id",referencedColumnName="id"),
+		inverseJoinColumns = @JoinColumn(name = "venta_id", referencedColumnName="id"))
+	private List<ProductosModel> productos;
+	
+	
+	public VentasModel() {
+	}
+	public VentasModel(long id, ClienteModelo cliente, List<ProductosModel> productos) {
+		this.id = id;
+		this.cliente = cliente;
+		this.productos = productos;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public ClienteModelo getCliente() {
+		return cliente;
+	}
+	public void setCliente(ClienteModelo cliente) {
+		this.cliente = cliente;
+	}
+	public List<ProductosModel> getProductos() {
+		return productos;
+	}
+	public void setProductos(List<ProductosModel> productos) {
+		this.productos = productos;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(cliente, id, productos);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		VentasModel other = (VentasModel) obj;
+		return Objects.equals(cliente, other.cliente) && id == other.id && Objects.equals(productos, other.productos);
+	}
+	@Override
+	public String toString() {
+		return "VentasModel [id=" + id + ", cliente=" + cliente + ", productos=" + productos + "]";
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.Steven.misiontic.repositories;
+
+public interface ClienteRepository {
+
+}

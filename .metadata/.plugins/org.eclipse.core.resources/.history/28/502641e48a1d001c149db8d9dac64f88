@@ -1,0 +1,48 @@
+package com.Steven.misiontic.Controllers;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.Steven.misiontic.modelo.VentasModel;
+import com.Steven.misiontic.services.VentasService;
+
+
+
+@RestController
+@RequestMapping("/ventas")
+public class ventaController {
+	@Autowired
+	VentasService ventaService;
+	
+	@GetMapping
+	public ArrayList<VentasModel> obtenerClientes(){
+		return ventaService.obtenerVentas();
+	}
+	
+	@PostMapping
+	public VentasModel crearCliente(@RequestBody VentasModel venta) {
+		return ventaService.guardarVenta(venta);
+	}
+	
+	@GetMapping(path = "{id}")
+	public Optional<VentasModel> obtenerPorId(@PathVariable("id") Long id){
+		return ventaService.obtenerPorId(id);
+	}
+	
+	@DeleteMapping(path = "{id}")
+	public String eliminarVentaPorId(@PathVariable("id") Long id) {
+		boolean eliminado = ventaService.eliminarVentas(id);
+		
+		if(eliminado) return "Venta Eliminado";
+		else return "Error Eliminado Venta";
+	}
+}
