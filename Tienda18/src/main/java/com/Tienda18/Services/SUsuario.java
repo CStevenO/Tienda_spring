@@ -45,6 +45,6 @@ public class SUsuario {
 				return Optional.of(usu);
 			}
 		}
-		return null;
+		return Optional.of(new MUsuario());
 	}
 }

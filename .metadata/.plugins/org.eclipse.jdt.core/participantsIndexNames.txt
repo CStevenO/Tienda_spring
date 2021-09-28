@@ -1,3 +1,9 @@
 INDEX VERSION 1.131
+C:\Users\Steve\Downloads\misiontic\misiontic\Tienda_spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\682320358.index
+\Tienda1\src\main\java
 C:\Users\Steve\Downloads\misiontic\misiontic\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\518844960.index
 \Tienda\src\main\java
+C:\Users\Steve\Downloads\misiontic\misiontic\Tienda_spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\518844960.index
+\Tienda\src\main\java
+C:\Users\Steve\Downloads\misiontic\misiontic\Tienda_spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\992789805.index
+\Tienda18\src\main\java

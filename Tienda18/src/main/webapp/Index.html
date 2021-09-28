@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <style>
+        body {
+            background: #6459ff;
+            background: linear-gradient(to right, #51ceff, #5980ff);
+        }
+        .bg {
+            background-image: url(../img/inicio_login.png);
+            background-position: center center;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div align='center'>
+		<div class="toast">
+	    	<div class="toast-header">
+	      		<strong class="mr-auto text-primary">Ingresar</strong>
+	      		<small class="text-muted">Error al ingresar</small>
+	    	</div>
+	    	<div class="toast-body">
+	      		Usuario o contraseña incorrecta.
+	    	</div>
+	  	</div>
+	</div>
+    <div class="container w-75 bg-primary mt-5 rounded shadow">
+        <div class="row align-items-stretch">
+            <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
+            </div>
+
+            <div class="col bg-white p-5 rounded-end">
+                <div class="text-end">
+                    <img src="" width="48" alt="">
+                </div>
+                <h2 class="fw-bold text-center pt-5 mb-5">Bienvenido</h2>
+
+                <form id="form">
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" name="usuario" id="usuario" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="contrasena" id="password" required>
+                    </div>
+
+                    <div class="mb-4 form-check">
+                        <input type="checkbox" class="form-check-input" name="conectado">
+                        <label for="conectado" class="form-check-label">Mantenerme conectado</label>
+                    </div>
+					<div class="d-grid">
+                        <button type="button" class="btn btn-primary" name="boton_ingreso" id="inicio">Iniciar sesion</button>
+                        <p class=" mt-5 mb-2 text-md-center">&copy;2021</p>
+                    </div>
+                    
+                </form>
+                	
+            </div>
+        </div>
+    </div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		  $("#inicio").click(function(){
+	        var datos = JSON.stringify({
+	          	"usuario": $("#usuario").val(),
+	        	"password": $("#password").val()
+	        });
+	        var request = $.ajax({
+	            url: "http://localhost:8080/usuarios/login", 
+	            method: "post", 
+	            data: datos,
+	            dataType: "json",
+	            contentType:'application/json'
+	        });
+	        request.done(function(respuesta) {
+	            if(respuesta.cedula_usuario === 0){
+	            	$('.toast').toast('show');
+	            }
+	            else{
+	            	sessionStorage.setItem('rol', respuesta.rol.rol);
+	            	window.location.href = "../Inicio.jsp";
+	            }
+	        });
+	        request.fail(function(jqXHR, textStatus) {
+	            alert("Hubo un error: " + textStatus);
+	        });
+		  });
+		});
+	</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
