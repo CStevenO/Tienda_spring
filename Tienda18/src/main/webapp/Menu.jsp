@@ -1,5 +1,5 @@
 <%
-int rol = (int)session.getAttribute("rol");
+//int rol = (int)session.getAttribute("rol");
 %>
 
 <main>
@@ -20,7 +20,7 @@ int rol = (int)session.getAttribute("rol");
                         <a class="nav-link active" aria-current="page" href="../Tienda/Inicio.jsp">Inicio</a>
                     </li>
                     <%
-                	if(rol == 1){
+                	//if(rol == 1){
                 	%>
 	                    <li class="nav-item">
 	                        <a class="nav-link active" href="../Tienda/Usuarios.jsp">Usuarios</a>
@@ -34,7 +34,7 @@ int rol = (int)session.getAttribute("rol");
 	                    <li class="nav-item">
 	                        <a class="nav-link active" href="../Tienda/Productos.jsp">Productos</a>
 	                    </li>
-                    <% }%>
+                    <% //}%>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Ventas</a>
                     </li>
