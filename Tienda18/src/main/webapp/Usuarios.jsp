@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +18,7 @@
 <body>
 <jsp:include page="Menu.jsp"></jsp:include>
 
-	<form method="post">
+	<form method="post" accept-charset="utf-8">
 	    <div class="container pt-3">
 	        <div class="mb-3">
 	            <label for="texto_cedula" class="form-label">Cedula</label>
