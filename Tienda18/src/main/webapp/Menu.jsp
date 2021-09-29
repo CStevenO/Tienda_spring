@@ -1,5 +1,5 @@
 <%
-//int rol = (int)session.getAttribute("rol");
+int rol = (int)session.getAttribute("rol");
 %>
 
 <main>
@@ -17,24 +17,24 @@
             <div class="collapse navbar-collapse" id="navbarsExample04">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../Tienda/Inicio.jsp">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="../Inicio.jsp">Inicio</a>
                     </li>
                     <%
-                	//if(rol == 1){
+                	if(rol == 1){
                 	%>
 	                    <li class="nav-item">
-	                        <a class="nav-link active" href="../Tienda/Usuarios.jsp">Usuarios</a>
+	                        <a class="nav-link active" href="../Usuarios.jsp">Usuarios</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link active" href="../Tienda/Clientes.jsp">Clientes</a>
+	                        <a class="nav-link active" href="../Clientes.jsp">Clientes</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link active" href="../Tienda/Proveedores.jsp">Proveedores</a>
+	                        <a class="nav-link active" href="../Proveedores.jsp">Proveedores</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link active" href="../Tienda/Productos.jsp">Productos</a>
+	                        <a class="nav-link active" href="../Productos.jsp">Productos</a>
 	                    </li>
-                    <% //}%>
+                    <% }%>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Ventas</a>
                     </li>
