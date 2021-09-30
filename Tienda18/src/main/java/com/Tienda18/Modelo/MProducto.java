@@ -16,7 +16,6 @@ import javax.persistence.Table;
 public class MProducto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codigo_producto;
 	@Column(nullable=false)
     private double iva_compra;
@@ -39,6 +38,7 @@ public class MProducto {
 	}
 	public MProducto() {
 	}
+	
 	public long getCodigo_producto() {
 		return codigo_producto;
 	}

@@ -37,5 +37,17 @@ public class SProducto {
 			e.printStackTrace();
 			return false;
 		}
+	
+	}
+	public boolean eliminar() {
+		try {
+			productoR.deleteAll();
+			return true;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	
 	}
 }

@@ -28,6 +28,9 @@ public class MProveedor {
 	}
 	public MProveedor() {
 	}
+	public MProveedor(long nit_proveedor) {
+		this.nit_proveedor = nit_proveedor;
+	}
 	public long getNit_proveedor() {
 		return nit_proveedor;
 	}
