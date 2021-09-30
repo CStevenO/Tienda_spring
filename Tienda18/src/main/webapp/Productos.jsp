@@ -16,20 +16,15 @@
 <jsp:include page="Menu.jsp"></jsp:include>
 
     <container pt-3>
-	    <form>
+	    <form enctype="multipart/form-data">
 	        <div class="mb-3">
 	            <label for="archivo" class="form-label">Ingrese archivo de productos</label>
-	                <input class="form-control" type="file" id="archivo" name="archivo" placeholder="" accept='.csv' onchange='openFile(event)' required>
+	                <input class="form-control" type="file" id="archivo" name="file" placeholder="" accept='.csv' required>
 	                <script>
 		                var openFile = function(event) {
 		                  var input = event.target;
-		
-		                  var reader = new FileReader();
-		                  reader.onload = function(){
-		                    var text = reader.result;
-		                    sessionStorage.setItem('archi', text);
-		                  };
-		                  reader.readAsText(input.files[0]);
+		                  sessionStorage.setItem('archi', input.files[0]);
+		                  
 		                };
 		              </script>
 	        </div>
@@ -52,80 +47,35 @@
     
 	<script type="text/javascript">
 		$(document).ready(function(){
-				function isNumber(n) { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); } 
-				function csvJSON(csv){
-				  var lines=csv.split("\r\n");
-				  var result = [];
-				  var headers=lines[0].split(";");
-				  for(var i=1;i<lines.length;i++){
-					  var obj = {};
-					  var currentline=lines[i].split(";");
-					  for(var j=0;j<headers.length;j++){
-						  if(headers[j]==="nit_proveedor"){
-							  var ob = {};
-							  ob[headers[j]] = parseInt(currentline[j]);
-							  obj[headers[j]] = ob;
-						  }
-						  else{
-							  if(isNumber(currentline[j])){
-								  obj[headers[j]] = parseInt(currentline[j], 10);
-							  }
-							  else{
-								  obj[headers[j]] = currentline[j];
-							  }
-						  } 
-					  }
-					  result.push(obj);
-				  }
-				  return JSON.stringify(result);
-				}	
 			//CREAR usuario
 			  $("#cargar").click(function(){
-			        var request = $.ajax({
+				  var form = new FormData();
+				  var data = sessionStorage.getItem('archi');
+				  form.append("file", data);
+				  var formData = new FormData();
+					var request1 = $.ajax({
 			            url: "http://localhost:8080/productos",
-			            method: "delete",
-			            dataType: "text",
-			            contentType:'application/json'
+			            method: "post",
+			            data: form,
+			            dataType: "json",
+			            contentType: false,
+			            processData: false,
+			            mimeType: "multipart/form-data"
 			        });
-			        request.done(function(respuesta) {
-			            if(respuesta === "Productos Eliminados"){
-			            	var data = sessionStorage.getItem('archi');
-							var datos = csvJSON(data);
-							var request1 = $.ajax({
-					            url: "http://localhost:8080/productos",
-					            method: "post",
-					            data: datos,
-					            dataType: "json",
-					            contentType:'application/json'
-					        });
-							request1.done(function(respuesta) {
-					            if(respuesta === null){
-					            	$('.toast').toast('show');
-					            	$("#strong").text("Error");
-					            	$("#small").text("Error al cargar");
-					            	$("#toast_body").text("No se pudieron cargar los productos.");	
-					            }
-					            else{
-					            	$('.toast').toast('show');
-					            	$("#strong").text("Exito");
-					            	$("#small").text("Exito al cargar");
-					            	$("#toast_body").text("los productos fueron cargados exitosamente.");		            	
-					            }
-					        });
-					        request1.fail(function(jqXHR, textStatus) {
-					            alert("Hubo un error: " + textStatus);
-					        }); 
+					request1.done(function(respuesta) {
+			            if(respuesta.message ==="Carga del archivo exitosa"){
+			            	$('.toast').toast('show');
+			            	$("#strong").text("Exito");
+			            	$("#small").text("Exito al cargar");
+			            	$("#toast_body").text("los productos fueron cargados exitosamente.");	
 			            }
 			            else{
 			            	$('.toast').toast('show');
 			            	$("#strong").text("Error");
 			            	$("#small").text("Error al cargar");
-			            	$("#toast_body").text("No se pudieron eliminar los productos.");		            	
+			            	$("#toast_body").text("No se pudieron cargar los productos.");        	
 			            }
-			        });
-			        request.fail(function(jqXHR, textStatus) {
-			            alert("Hubo un error: " + textStatus);
-			        }); 
+					});
 			  });
 			
 			});

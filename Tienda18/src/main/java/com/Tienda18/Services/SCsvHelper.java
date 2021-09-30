@@ -23,7 +23,7 @@ import com.Tienda18.Modelo.MProveedor;
 
 public class SCsvHelper {
 	public static String TYPE = "text/csv";
-	  static String[] HEADERs = { "codigo_producto", "iva_compra", "nombre_producto", "precio_compra", "precio_venta", "nit_proveedor" };
+	  static String[] HEADERs = { "codigo_producto", "nombre_producto", "nit_proveedor", "precio_compra", "iva_compra", "precio_venta" };
 	  
 	  public static boolean hasCSVFormat(MultipartFile file) {
 		    if (TYPE.equals(file.getContentType())
