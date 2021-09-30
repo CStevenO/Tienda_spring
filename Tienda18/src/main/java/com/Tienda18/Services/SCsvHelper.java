@@ -57,10 +57,10 @@ public class SCsvHelper {
 		    	  System.out.println(csvRecord.toString());
 		    	  MProducto producto = new MProducto(
 		              Long.parseLong(csvRecord.get("codigo_producto")),
-		              Double.parseDouble(csvRecord.get("iva_compra")),
-		              new MProveedor(Long.parseLong(csvRecord.get("nit_proveedor"))),
 		              csvRecord.get("nombre_producto"),
+		              new MProveedor(Long.parseLong(csvRecord.get("nit_proveedor"))),
 		              Double.parseDouble(csvRecord.get("precio_compra")),
+		              Double.parseDouble(csvRecord.get("iva_compra")),
 		              Double.parseDouble(csvRecord.get("precio_venta"))
 		            );
 		    	  
@@ -88,8 +88,7 @@ public class SCsvHelper {
 		              producto.getNombre_producto(),
 		              String.valueOf(producto.getPrecio_compra()),
 		              String.valueOf(producto.getPrecio_venta()),
-		              String.valueOf(producto.getProveedor().getNit_proveedor())
-		            );
+		              String.valueOf(producto.getNit_proveedor()));
 
 		        csvPrinter.printRecord(data);
 		      }
