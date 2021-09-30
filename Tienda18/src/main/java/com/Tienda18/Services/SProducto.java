@@ -20,6 +20,10 @@ public class SProducto {
 		return productoR.save(producto);
 	}
 	
+	public ArrayList<MProducto> guardarTodos(ArrayList<MProducto> productos){
+		return (ArrayList<MProducto>) productoR.saveAll(productos);
+	}
+	
 	public Optional<MProducto> obtenerPorId(Long id){
 		return productoR.findById(id);
 	}
@@ -31,6 +35,17 @@ public class SProducto {
 	public boolean eliminar(Long id) {
 		try {
 			productoR.deleteById(id);
+			return true;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean eliminarTodos() {
+		try {
+			productoR.deleteAll();
 			return true;
 		}
 		catch(Exception e) {
