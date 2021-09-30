@@ -42,6 +42,7 @@ public class CProducto {
 	public ArrayList<MProducto> obtener(){
 		return productosS.obtener();
 	}
+
 	
 	//@PostMapping
 	//public MProducto crear(@RequestBody MProducto producto) {
@@ -105,10 +106,29 @@ public class CProducto {
 	        .body(file);
 	  }
 	
+
+	/*
+	@PostMapping
+	public MProducto crear(@RequestBody MProducto producto) {
+		return productosS.guardar(producto);
+	}*/
+	
+	@PostMapping
+	public ArrayList<MProducto> crearTodos(@RequestBody ArrayList<MProducto> productos){
+		return productosS.guardarTodos(productos);
+	}
+
 	
 	@GetMapping(path = "{id}")
 	public Optional<MProducto> obtenerPorId(@PathVariable("id") Long id){
 		return productosS.obtenerPorId(id);
+	}
+	
+	@DeleteMapping
+	public String eliminar() {
+		boolean eliminado = productosS.eliminarTodos();
+		if(eliminado) return "Productos Eliminados";
+		else return "Error Eliminado Productos";
 	}
 	
 	@DeleteMapping(path = "{id}")
