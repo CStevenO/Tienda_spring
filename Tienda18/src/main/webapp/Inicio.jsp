@@ -63,7 +63,7 @@
         <img src="../img/compras1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto" >
-                <button type="button" class="btn btn-outline-info btn-lg" style="margin-right: 400px" onclick="location.href=''">Ventas</button>
+                <button type="button" class="btn btn-outline-info btn-lg" style="margin-right: 400px" onclick="location.href='../Ventas.jsp'">Ventas</button>
             </div>
         </div>
     </div>
@@ -72,7 +72,7 @@
         <img src="../img/reportes1.png" class="img-centro-vert-hor" alt="...">
         <div class=" card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto"> 
-                <button type="button" class="btn btn-outline-dark btn-lg" style="margin-left: 400px" onclick="location.href=''">Reportes</button>
+                <button type="button" class="btn btn-outline-dark btn-lg" style="margin-left: 400px" onclick="location.href='../Reportes.jsp'">Reportes</button>
             </div>
         </div>
     </div>

@@ -36,10 +36,10 @@ int rol = (int)session.getAttribute("rol");
 	                    </li>
                     <% }%>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Ventas</a>
+                        <a class="nav-link active" href="../Ventas.jsp">Ventas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Reportes</a>
+                        <a class="nav-link active" href="../Reportes.jsp">Reportes</a>
                     </li>
                 </ul>
             </div>
