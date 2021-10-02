@@ -45,33 +45,30 @@ public class CProducto {
 	@PostMapping  
 	  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 	    String message = "";
-	    if(productosS.eliminar()) {
-		    if (SCsvHelper.hasCSVFormat(file)) {
-		      try {
-		        csv.save(file);
-	
-		        message = "Carga del archivo exitosa";
-		        
-		        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-		                .path("/productos/download/")
-		                .path(file.getOriginalFilename())
-		                .toUriString();
-	
-		        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message,fileDownloadUri));
-		      } catch (Exception e) {
-		        message = "No se puede subir archivo!";
-		        return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message,""));
-		      }
-		    }
-	
-		    message = "Agregue un archivo .csv";
-		    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message,""));
-	    } 
-	    else {
-	    	message = "No se pudo eliminar la información";
-	    	return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message,""));
-	    }
 	  
+	    if (SCsvHelper.hasCSVFormat(file)) {
+	      try {
+	        csv.save(file);
+
+	        message = "Carga del archivo exitosa";
+	        
+	        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+	                .path("/productos/download/")
+	                .path(file.getOriginalFilename())
+	                .toUriString();
+
+	        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message,fileDownloadUri));
+	      } catch (Exception e) {
+	        message = "No se puede subir archivo!";
+	        return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message,""));
+	      }
+	    }
+
+	    message = "Agregue un archivo .csv";
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message,""));
+     
+    
+  
     }
 	
 	@GetMapping("/prods")

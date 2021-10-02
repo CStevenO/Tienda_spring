@@ -55,8 +55,7 @@
 				columna5.innerHTML = item.precio_compra;
 				var columna6 = document.createElement("td");
 				columna6.innerHTML = item.precio_venta;
-				var columna7 = document.createElement("td");
-				columna7.innerHTML = "<button class='btn btn-danger' type='button' name='"+item.codigo_producto+"' id='borrar'>Borrar</button>" ;
+				
 
 				
 				tr.appendChild(columna1);
@@ -65,7 +64,6 @@
 				tr.appendChild(columna4);
 				tr.appendChild(columna5);
 				tr.appendChild(columna6);
-				tr.appendChild(columna7);
 				lista.appendChild(tr);
 				
 			});
@@ -85,7 +83,6 @@
                 <th scope="col">Producto</th>
                 <th scope="col">Precio Compra</th>
                 <th scope="col">Precio Venta</th>
-                <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody id = "myTable">
@@ -97,7 +94,7 @@
     
 	<script type="text/javascript">
 		$(document).ready(function(){
-			//CREAR usuario
+			
 			  $("#cargar").click(function(){
 				  var form = new FormData();
 				  form.append("file", $("#archivo")[0].files[0]);
@@ -115,7 +112,8 @@
 			            	$('.toast').toast('show');
 			            	$("#strong").text("Exito");
 			            	$("#small").text("Exito al cargar");
-			            	$("#toast_body").text("los productos fueron cargados exitosamente.");	
+			            	$("#toast_body").text("los productos fueron cargados exitosamente.");
+			            	window.location.href= "../Productos.jsp";
 			            }
 			            else{
 			            	$('.toast').toast('show');
@@ -124,34 +122,7 @@
 			            	$("#toast_body").text("No se pudieron cargar los productos.");        	
 			            }
 					});
-			  });
-			  $("#borrar").click(function(){
-				    var request = $.ajax({
-					            url: "http://localhost:8080/productos/"+ this.getAttribute("name"),
-					            method: "delete",
-					            dataType: "text",
-					            contentType:'application/json'
-		    		});
-				    request.done(function(respuesta) {
-			        	if(respuesta==="Error Eliminando Producto"){
-			        		$('.toast').toast('show');
-			            	$("#strong").text("Borrar");
-			            	$("#small").text("Error al borrar");
-			            	$("#toast_body").text("Producto no se pudo borrar.");
-			        	}
-			        	else{
-				        	$('.toast').toast('show');
-			            	$("#strong").text("Borrar");
-			            	$("#small").text("Exito al borrar");
-			            	$("#toast_body").text("Producto se borró exitosamente.");
-				        }
-				    });
-				    request.fail(function(jqXHR, textStatus) {
-			            alert("Hubo un error: " + textStatus);
-			        });
-		    
-		   		});
-			
+			  })
 			});
 	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
