@@ -72,7 +72,7 @@ public class SCsvHelper {
 
 		      return productoList;
 		    } catch (IOException e) {
-		      throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
+		      throw new RuntimeException("error al convertir el archivo CSV: " + e.getMessage());
 		    }
 		  }
 	  
@@ -96,7 +96,7 @@ public class SCsvHelper {
 		      csvPrinter.flush();
 		      return new ByteArrayInputStream(out.toByteArray());
 		    } catch (IOException e) {
-		      throw new RuntimeException("fail to import data to CSV file: " + e.getMessage());
+		      throw new RuntimeException("Error al importar los datos del CSV: " + e.getMessage());
 		    }
 		  }
 

@@ -1,6 +1,6 @@
 <%@ page language="java"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -55,9 +55,6 @@
 				columna5.innerHTML = item.precio_compra;
 				var columna6 = document.createElement("td");
 				columna6.innerHTML = item.precio_venta;
-				
-
-				
 				tr.appendChild(columna1);
 				tr.appendChild(columna2);
 				tr.appendChild(columna3);
@@ -65,7 +62,6 @@
 				tr.appendChild(columna5);
 				tr.appendChild(columna6);
 				lista.appendChild(tr);
-				
 			});
 		}
 	})
@@ -89,16 +85,12 @@
         
         </tbody>
     </table>
-    
-    
-    
 	<script type="text/javascript">
 		$(document).ready(function(){
-			
 			  $("#cargar").click(function(){
 				  var form = new FormData();
 				  form.append("file", $("#archivo")[0].files[0]);
-					var request1 = $.ajax({
+					var request = $.ajax({
 			            url: "http://localhost:8080/productos",
 			            method: "post",
 			            data: form,
@@ -107,12 +99,9 @@
 			            processData: false,
 			            mimeType: "multipart/form-data"
 			        });
-					request1.done(function(respuesta) {
+					request.done(function(respuesta) {
 			            if(respuesta.message ==="Carga del archivo exitosa"){
-			            	$('.toast').toast('show');
-			            	$("#strong").text("Exito");
-			            	$("#small").text("Exito al cargar");
-			            	$("#toast_body").text("los productos fueron cargados exitosamente.");
+			            	sessionStorage.setItem('exito', true);
 			            	window.location.href= "../Productos.jsp";
 			            }
 			            else{
@@ -122,7 +111,20 @@
 			            	$("#toast_body").text("No se pudieron cargar los productos.");        	
 			            }
 					});
-			  })
+					request.fail(function(textStatus) {
+						$('.toast').toast('show');
+		            	$("#strong").text("Error");
+		            	$("#small").text("Error al cargar");
+		            	$("#toast_body").text(textStatus.responseJSON.message);
+			        });  
+			  	});
+			  if(sessionStorage.getItem('exito')){
+				  	$('.toast').toast('show');
+	            	$("#strong").text("Exito");
+	            	$("#small").text("Exito al cargar");
+	            	$("#toast_body").text("los productos fueron cargados exitosamente.");
+	            	sessionStorage.removeItem('exito');
+			  }
 			});
 	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

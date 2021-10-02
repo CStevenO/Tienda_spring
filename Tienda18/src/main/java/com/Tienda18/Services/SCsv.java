@@ -22,7 +22,7 @@ public class SCsv {
 	      List<MProducto> productos = SCsvHelper.csvToTable(file.getInputStream());
 	      prodR.saveAll(productos);
 	    } catch (IOException e) {
-	      throw new RuntimeException("fail to store csv data: " + e.getMessage());
+	      throw new RuntimeException("error al guardar archivo: " + e.getMessage());
 	    }
 	  }
 	
