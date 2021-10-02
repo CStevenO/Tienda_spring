@@ -118,7 +118,7 @@
 		//CONSULTAR	por Id
 		  $("#consultar").click(function(){
 	        var request = $.ajax({
-	            url: "http://localhost:8080/usuarios/" + $("#texto_cedula").val() ,
+	            url: "http://localhost:8080/usuarios/" + $("#texto_cedula").val(),
 	            method: "get",
 	            dataType: "json",
 	            contentType:'application/json'
@@ -147,7 +147,7 @@
 		  //BORRAR usuario
 	   	  $("#borrar").click(function(){
 			    var request = $.ajax({
-				            url: "http://localhost:8080/usuarios/"+ $("#texto_cedula").val() ,
+				            url: "http://localhost:8080/usuarios/"+ $("#texto_cedula").val(),
 				            method: "delete",
 				            dataType: "text",
 				            contentType:'application/json'

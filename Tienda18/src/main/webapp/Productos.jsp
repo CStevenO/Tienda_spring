@@ -20,15 +20,7 @@
 	        <div class="mb-3">
 	            <label for="archivo" class="form-label">Ingrese archivo de productos</label>
 	                <input class="form-control" type="file" id="archivo" name="file" placeholder="" accept='.csv' required>
-	                <script>
-		                var openFile = function(event) {
-		                  var input = event.target;
-		                  sessionStorage.setItem('archi', input.files[0]);
-		                  
-		                };
-		              </script>
 	        </div>
-	
 	        <div class="d-grid gap-3 d-md-block">
 	            <button class="btn btn-primary btn-lg" type="button" name="boton_cargar_archivo_productos" id="cargar">Cargar</button>
 	        </div>
@@ -50,9 +42,7 @@
 			//CREAR usuario
 			  $("#cargar").click(function(){
 				  var form = new FormData();
-				  var data = sessionStorage.getItem('archi');
-				  form.append("file", data);
-				  var formData = new FormData();
+				  form.append("file", $("#archivo")[0].files[0]);
 					var request1 = $.ajax({
 			            url: "http://localhost:8080/productos",
 			            method: "post",
