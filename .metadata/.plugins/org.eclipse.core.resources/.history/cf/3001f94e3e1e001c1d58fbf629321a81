@@ -1,5 +1,0 @@
-package com.Tienda18.Repositories;
-
-public interface RVenta {
-
-}
