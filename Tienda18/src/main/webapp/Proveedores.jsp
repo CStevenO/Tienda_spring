@@ -23,23 +23,23 @@
 	        <div class="mb-3">
 	            <label for="texto_NIT" class="form-label">NIT</label>
 	            <input type="number" class="form-control"
-	                placeholder="Ingrese el Numero de Identificacion Tributaria del proveedor" name="texto_NIT_proveedor" id="nit_proveedor" required>
+	                placeholder="Ingrese el Numero de Identificacion Tributaria del proveedor" name="texto_NIT_proveedor" id="nit_proveedor" value="">
 	        </div>
 	        <div class="mb-3">
 	            <label for="texto_proveedor" class="form-label">Nombre Proveedor</label>
-	            <input type="text" class="form-control" placeholder="Ingrese el Nombre del proveedor" name="texto_nombre_proveedor" id="nombre_proveedor">
+	            <input type="text" class="form-control" placeholder="Ingrese el Nombre del proveedor" name="texto_nombre_proveedor" id="nombre_proveedor" value="">
 	        </div>
 	        <div class="mb-3">
 	            <label for="texto_direccion" class="form-label">Direccion</label>
-	            <input type="text" class="form-control" placeholder="Ingrese Direccion del proveedor" name="texto_direccion_proveedor" id="direccion_proveedor">
+	            <input type="text" class="form-control" placeholder="Ingrese Direccion del proveedor" name="texto_direccion_proveedor" id="direccion_proveedor" value="">
 	        </div>
 	        <div class="mb-3">
 	            <label for="texto_telefono" class="form-label">Telefono</label>
-	            <input type="tel" class="form-control" placeholder="Ingrese Telefono del proveedor"name="texto_telefono_proveedor" id="telefono_proveedor">
+	            <input type="tel" class="form-control" placeholder="Ingrese Telefono del proveedor"name="texto_telefono_proveedor" id="telefono_proveedor" value="">
 	        </div>
 	        <div class="mb-3">
 	            <label for="texto_ciudad" class="form-label">Ciudad</label>
-	            <input type="text" class="form-control" placeholder="Ingrese Ciudad del proveedor" name="texto_ciudad_proveedor" id="ciudad_proveedor">
+	            <input type="text" class="form-control" placeholder="Ingrese Ciudad del proveedor" name="texto_ciudad_proveedor" id="ciudad_proveedor" value="">
 	        </div>
 	
 	        <div class="d-grid gap-3 d-md-block">
