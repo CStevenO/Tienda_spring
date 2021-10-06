@@ -44,7 +44,7 @@
 	                         <input type="text" class="form-control" id="codigo_producto" placeholder="Codigo Producto" name="codigo_producto">
 	                     </div>
 	                     <div class="col-md-2">
-	                         <button type="button" class="btn btn-primary mb-3" id="consultar2">Consultar</button>
+	                         <button type="button" class="btn btn-primary mb-3" name="Consultar" id="Consultar">Consultar</button>
 	                     </div>
 	                     <div class="col-md-4">
 	                         <label for="input_Nombre_Producto" class="visually-hidden">Nombre Producto</label>
@@ -52,12 +52,12 @@
 	                     </div>
 	                     <div class="col-md-1">
 	                         <label for="input_Cantidad_Producto" class="visually-hidden">Cant.</label>
-	                         <input type="text" class="form-control" id="candidad_producto" placeholder="Cantidad" name="cantida_producto">
+	                         <input type="text" class="form-control" id="cantidad_producto" placeholder="Cantidad" name="cantidad_producto">
 	                     </div>
 	                     <div class="col-md-2">
 	                         <label for="input_Valor_Producto_1" class="visually-hidden">Valor total producto 1</label>
-	                         <input type="text" class="form-control" id="valor_total_producto_1"
-	                             placeholder="Valor Total 1" name="valor_total_producto_1" disabled>
+	                         <input type="text" class="form-control" id="valor_total_producto"
+	                             placeholder="Valor Total 1" name="valor_total_producto" disabled>
 	                     </div>
 	             </div>
              </div>
