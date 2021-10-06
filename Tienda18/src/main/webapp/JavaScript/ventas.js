@@ -64,6 +64,34 @@ $(document).ready(function(){
 		        });
 		 	
 	  });
+
+		$("#id #consultar2").click(function(){
+			var request = $.ajax({
+		            url: "http://localhost:8080/productos/" + $("#codigo_producto").val(),
+		            method: "get",
+		            dataType: "json",
+		            contentType:'application/json'
+		        });
+		request.done(function(respuesta) {
+		        	console.log(respuesta);
+		            if(respuesta === null){
+		            	$('.toast').toast('show');
+		            	$("#strong").text("Consultar");
+		            	$("#small").text("Error al consultar");
+		            	$("#toast_body").text("Producto no existe.");
+		            }
+		            else{
+		            	$("#codigo_producto").val(respuesta.codigo_producto);
+		            	$("#nombre_producto").val(respuesta.nombre_producto);
+						$("#valor_total_producto_1").val((respuesta.precio_venta * $("#candidad_producto").val()));		
+		            }
+		        });
+		        request.fail(function(jqXHR, textStatus) {
+		            alert("Hubo un error: " + textStatus);
+		        });
+			
+			
+		});
 			    
 		  //BORRAR usuario
 	   	  $("#borrar").click(function(){
