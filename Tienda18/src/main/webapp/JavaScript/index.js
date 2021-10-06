@@ -20,6 +20,7 @@ $(document).ready(function(){
 	        	$('.toast').toast('show');
 	        }
 	        else{
+				sessionStorage.setItem('usuario', respuesta);
 	        	window.location.href = "../Inicio.jsp?rol="+respuesta.rol.rol;
 	        }
 	    });

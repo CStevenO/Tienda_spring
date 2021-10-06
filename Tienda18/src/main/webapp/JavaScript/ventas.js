@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+	var usuario = sessionStorage.getItem('usuario');
 	function GenConsec(){
 		var consec = 1;
 		var request = $.ajax({
@@ -38,6 +38,10 @@ $(document).ready(function(){
 				});
 				con++;
 			});
+			con--;
+			$("#codigo_producto"+con).val("");
+			$("#nombre_producto"+con).val("");				
+			$("#cantidad_producto"+con).val("");
 			$("[id^='Consultar']").unbind();			//los unbind() sirven para borrar los eventos que tengan
 			$("[id^='cantidad_producto']").unbind();
 			inicializar();
@@ -83,6 +87,7 @@ $(document).ready(function(){
 								productos[elem-1] = respuesta;
 							}
 			            }
+						cambiosRealizados();
 			        });
 			        request.fail(function(jqXHR, textStatus) {
 			            alert("Hubo un error: " + textStatus);
@@ -112,10 +117,11 @@ $(document).ready(function(){
 			for(var i=0;i<$("[id^='cantidad_producto']").length;i++){
 				if($("[id^='cantidad_producto']").length!==1){
 					identi = (i+1).toString();
-					alert(identi);
 				}
-				total_productos += productos[i].precio_venta*$("#cantidad_producto"+identi).val();
-				total_iva += productos[i].precio_venta*$("#cantidad_producto"+identi).val()*productos[i].iva_compra/100;
+				if(productos[i]!==0){
+					total_productos += parseInt(productos[i].precio_venta*$("#cantidad_producto"+identi).val());
+					total_iva += parseInt(productos[i].precio_venta*$("#cantidad_producto"+identi).val())*productos[i].iva_compra/100;
+				}
 			}
 			total = total_productos + total_iva;
 			$("#valor_total_venta").val(total_productos);
