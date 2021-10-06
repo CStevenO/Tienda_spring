@@ -1,4 +1,30 @@
 $(document).ready(function(){
+	
+	function GenConsec(){
+		var consec = 1;
+		var request = $.ajax({
+		            url: "http://localhost:8080/ventas",
+		            method: "get",
+		            dataType: "json",
+		            contentType:'application/json'
+		});
+        request.done(function(respuesta) {
+			console.log(respuesta);
+		    if(respuesta.length === 0){
+		    	consec = 1;
+				$("#cosecutivo_producto").val(consec);
+		    }
+		    else{
+				for(cod of respuesta){
+					valCod = cod.codigo_venta;
+				}
+				consec += valCod;
+				$("#cosecutivo_producto").val(consec);
+		    }
+		});
+	}
+	window.onload=GenConsec;
+	
 	var cloneCount = 2;
 	  $("#mas").click(function(){
 		    $('#id').clone().attr('id', 'id'+ cloneCount++).insertAfter('[id^=id]:last').appendTo('#productosX');
@@ -10,53 +36,34 @@ $(document).ready(function(){
 				});
 			});
 	  });
-	//ACTUALIZAR usuario
-	  $("#actualizar").click(function(){
-		  if($("#texto_cedula").val()==="" || $("#texto_nombre").val()==="" || $("#texto_correo").val()==="" || $("#texto_usuario").val()==="" || $("#password").val()===""){
-			  	$('.toast').toast('show');
-	        	$("#strong").text("Vacios");
-	        	$("#small").text("Espacios vacios");
-	        	$("#toast_body").text("Por favor no deje espacios vacios");
-		  }else{
-	  				crearActualizar("Actualizar","actualiza");
-			  }
-	  		});
 		
-		//CONSULTAR	por Id
-		  $("#consultar").click(function(){
-			  if($("#texto_cedula").val()===""){
-				  $('.toast').toast('show');
-	            	$("#strong").text("Vacios");
-	            	$("#small").text("Espacios vacios");
-	            	$("#toast_body").text("Por favor llene cedula");
-			  }else{
-			        var request = $.ajax({
-			            url: "http://localhost:8080/usuarios/" + $("#texto_cedula").val(),
-			            method: "get",
-			            dataType: "json",
-			            contentType:'application/json'
-			        });
-			        request.done(function(respuesta) {
-			        	console.log(respuesta);
-			            if(respuesta === null){
-			            	$('.toast').toast('show');
-			            	$("#strong").text("Consultar");
-			            	$("#small").text("Error al consultar");
-			            	$("#toast_body").text("Usuario no existe.");
-			            }
-			            else{
-			            	$("#texto_cedula").val(respuesta.cedula_usuario);
-			            	$("#texto_correo").val(respuesta.email_usuario);
-			            	$("#texto_nombre").val(respuesta.nombre_usuario);
-			            	$("#password").val(respuesta.password);
-			            	$("#texto_usuario").val(respuesta.usuario);
-			            }
-			        });
-			        request.fail(function(jqXHR, textStatus) {
-			            alert("Hubo un error: " + textStatus);
-			        });
-			 	}
-		  });
+		//CONSULTAR cliente	por Id
+	  $("#consultar").click(function(){
+		var request = $.ajax({
+		            url: "http://localhost:8080/clientes/" + $("#cedula_cliente").val(),
+		            method: "get",
+		            dataType: "json",
+		            contentType:'application/json'
+		        });
+		        
+		        request.done(function(respuesta) {
+		        	console.log(respuesta);
+		            if(respuesta === null){
+		            	$('.toast').toast('show');
+		            	$("#strong").text("Consultar");
+		            	$("#small").text("Error al consultar");
+		            	$("#toast_body").text("Cliente no existe.");
+		            }
+		            else{
+		            	$("#cedula_cliente").val(respuesta.cedula_cliente);
+		            	$("#nombre_cliente").val(respuesta.nombre_cliente);	
+		            }
+		        });
+		        request.fail(function(jqXHR, textStatus) {
+		            alert("Hubo un error: " + textStatus);
+		        });
+		 	
+	  });
 			    
 		  //BORRAR usuario
 	   	  $("#borrar").click(function(){
