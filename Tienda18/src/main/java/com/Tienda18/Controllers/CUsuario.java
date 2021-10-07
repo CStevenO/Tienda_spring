@@ -21,7 +21,7 @@ public class CUsuario {
 	@Autowired
 	SUsuario usuarioS;
 	
-	@GetMapping
+	@GetMapping("/listar_usuarios")
 	public ArrayList<MUsuario> obtener(){
 		return usuarioS.obtener();
 	}
