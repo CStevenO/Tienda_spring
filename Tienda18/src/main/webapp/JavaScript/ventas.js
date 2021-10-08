@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	var usuario = sessionStorage.getItem('usuario');
+	var cliente=0;
 	function GenConsec(){
 		var consec = 1;
 		var request = $.ajax({
@@ -42,6 +43,7 @@ $(document).ready(function(){
 			$("#codigo_producto"+con).val("");
 			$("#nombre_producto"+con).val("");				
 			$("#cantidad_producto"+con).val("");
+			$("#valor_total_producto"+con).val("");
 			$("[id^='Consultar']").unbind();			//los unbind() sirven para borrar los eventos que tengan
 			$("[id^='cantidad_producto']").unbind();
 			inicializar();
@@ -73,7 +75,7 @@ $(document).ready(function(){
 			            }
 			            else{
 			            	$("#nombre_producto"+elem).val(respuesta.nombre_producto);
-							if($("#cantidad_producto"+elem).val()===""){
+							if($("#cantidad_producto"+elem).val()==="" || $("#cantidad_producto"+elem).val()==0){
 								$("#cantidad_producto"+elem).val(1);
 								$("#valor_total_producto"+elem).val(respuesta.precio_venta);		
 							}
@@ -105,6 +107,19 @@ $(document).ready(function(){
 		perderFoco();
 		function perderFoco(){
 			$("[id^='cantidad_producto']").blur(function(){
+				var elem = this.id.substring(17);
+				var elem2 = elem;
+				if(elem===""){
+					elem=1;
+					elem2 = "";
+				}
+				if($("#cantidad_producto"+elem2).val()==="" || $("#cantidad_producto"+elem2).val()==0){
+					$("#cantidad_producto"+elem2).val(1);
+					$("#valor_total_producto"+elem2).val(productos[parseInt(elem-1)].precio_venta);		
+				}
+				else{
+					$("#valor_total_producto"+elem2).val(productos[parseInt(elem-1)].precio_venta*$("#cantidad_producto"+elem2).val());
+				}
 				cambiosRealizados();
 			});
 		}
@@ -128,7 +143,6 @@ $(document).ready(function(){
 			$("#total_iva").val(total_iva);
 			$("#totalcon_iva").val(total);
 		}
-		
 		//CONSULTAR cliente	por Id
 	  $("#consultar").click(function(){
 			var request = $.ajax({
@@ -149,6 +163,7 @@ $(document).ready(function(){
 	            else{
 	            	$("#cedula_cliente").val(respuesta.cedula_cliente);
 	            	$("#nombre_cliente").val(respuesta.nombre_cliente);	
+					cliente = respuesta;
 	            }
 	        });
 	        request.fail(function(jqXHR, textStatus) {
@@ -156,40 +171,94 @@ $(document).ready(function(){
 	        });
 		 	
 	  });
-			    
-		  //BORRAR usuario
-	   	  $("#borrar").click(function(){
-	   		if($("#texto_cedula").val()===""){
-				  $('.toast').toast('show');
-	            	$("#strong").text("Vacios");
-	            	$("#small").text("Espacios vacios");
-	            	$("#toast_body").text("Por favor llene cedula");
-			  }else{
-				    var request = $.ajax({
-					            url: "http://localhost:8080/usuarios/"+ $("#texto_cedula").val(),
-					            method: "delete",
-					            dataType: "text",
-					            contentType:'application/json'
-		    		});
-				    request.done(function(respuesta) {
-			        	if(respuesta==="Error Eliminado Usuario"){
-			        		$('.toast').toast('show');
-			            	$("#strong").text("Borrar");
-			            	$("#small").text("Error al borrar");
-			            	$("#toast_body").text("Cliente no se pudo borrar.");
-			        	}
-			        	else{
-				        	$('.toast').toast('show');
-			            	$("#strong").text("Borrar");
-			            	$("#small").text("Exito al borrar");
-			            	$("#toast_body").text("Usuario se borró exitosamente.");
-				        }
-				    });
-				    request.fail(function(jqXHR, textStatus) {
-			            alert("Hubo un error: " + textStatus);
-			        });
-			  	}
-	   		});	 
+		
+		$("#confirmar").click(function(){
+			if(productos!=0 && cliente!=0){
+				var datos = JSON.stringify({
+			    	"iva_venta": parseFloat($("#total_iva").val()),
+					"total_venta": parseFloat($("#totalcon_iva").val()),
+					"valor_venta": parseFloat($("#valor_total_venta").val()),
+					"cliente": {"cedula_cliente": cliente.cedula_cliente},
+					"usuario": {"cedula_usuario": parseInt(usuario)}
+			    });
+				var request = $.ajax({
+		            url: "http://localhost:8080/ventas",
+		            method: "post",
+					data: datos,
+		            dataType: "json",
+		            contentType:'application/json'
+		        });
+		        
+		        request.done(function(respuesta) {
+		            if(respuesta === null){
+		            	$('.toast').toast('show');
+		            	$("#strong").text("Crear");
+		            	$("#small").text("Error al crear");
+		            	$("#toast_body").text("No se pudo crear la venta.");
+		            }
+		            else{
+		            	let detalle = [];
+						var obj = {};
+						var identi = "";
+						for(var i=0;i<$("[id^='cantidad_producto']").length;i++){
+							if($("[id^='cantidad_producto']").length!==1){
+								identi = (i+1).toString();
+							}
+							if(productos[i]!==0){
+								obj = {
+									"cantidad_producto": parseInt($("#cantidad_producto"+identi).val()),
+									"valor_iva": parseFloat((productos[i].iva_compra/100)*productos[i].precio_venta*$("#cantidad_producto"+identi).val()),
+									"valor_total": parseFloat((productos[i].iva_compra/100)*productos[i].precio_venta*$("#cantidad_producto"+identi).val() + productos[i].precio_venta*$("#cantidad_producto"+identi).val()),
+									"valor_venta": parseFloat(productos[i].precio_venta),
+									"producto": {"codigo_producto": parseInt(productos[i].codigo_producto)},
+									"venta": {"codigo_venta": parseInt(respuesta.codigo_venta)}
+								};
+								detalle.push(obj);
+							}
+						}
+						var datos = JSON.stringify(detalle);
+						var request = $.ajax({
+				            url: "http://localhost:8080/DetalleVentas/Todos",
+				            method: "post",
+							data: datos,
+				            dataType: "json",
+				            contentType:'application/json'
+				        });
+						 request.done(function(respuesta) {
+				            if(respuesta === null){
+				            	$('.toast').toast('show');
+				            	$("#strong").text("Crear");
+				            	$("#small").text("Error al crear");
+				            	$("#toast_body").text("No se pudo crear el detalle venta.");
+				            }
+				            else{
+								sessionStorage.setItem('conf', true);
+								window.location.href = "../Ventas.jsp";
+				            }
+						});
+						request.fail(function(jqXHR, textStatus) {
+		            		alert("Hubo un error D: " + textStatus);
+	        			});	
+					}
+		        });
+		        request.fail(function(jqXHR, textStatus) {
+		            alert("Hubo un error V: " + textStatus);
+		        });
+		 	}
+			else{
+				$('.toast').toast('show');
+	        	$("#strong").text("Vacios");
+	        	$("#small").text("Error hay vacios");
+	        	$("#toast_body").text("Por favor agregue productos, sus cantidades y/o agregue un cliente");
+			}
+	  });	    
+		if(sessionStorage.getItem('conf')){
+			$('.toast').toast('show');
+        	$("#strong").text("Crear");
+        	$("#small").text("Error al crear");
+        	$("#toast_body").text("La venta se realizo exitosamente");
+			sessionStorage.removeItem('conf');
+		}
 /*
 		  function bordesTodos(){
 			  $('#texto_cedula').css('border-color', 'red'); 

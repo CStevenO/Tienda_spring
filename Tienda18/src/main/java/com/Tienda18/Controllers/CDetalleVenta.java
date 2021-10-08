@@ -33,6 +33,12 @@ public class CDetalleVenta {
 		return DetalleS.guardar(detalle);
 	}
 	
+	@PostMapping(path="/Todos")
+	public ArrayList<MDetalleVenta> crearTodos(@RequestBody ArrayList<MDetalleVenta> detalles){
+		return DetalleS.guardarTodos(detalles);
+	}
+	
+	
 	@GetMapping(path = "{id}")
 	public Optional<MDetalleVenta> obtenerPorId(@PathVariable("id") Long id){
 		return DetalleS.obtenerPorId(id);

@@ -20,6 +20,10 @@ public class SDetalleVenta {
 		return detalleVentaR.save(detalle);
 	}
 	
+	public ArrayList<MDetalleVenta> guardarTodos(ArrayList<MDetalleVenta> detalles){
+		return (ArrayList<MDetalleVenta>) detalleVentaR.saveAll(detalles);
+	}
+	
 	public Optional<MDetalleVenta> obtenerPorId(Long id){
 		return detalleVentaR.findById(id);
 	}

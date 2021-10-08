@@ -20,7 +20,7 @@ $(document).ready(function(){
 	        	$('.toast').toast('show');
 	        }
 	        else{
-				sessionStorage.setItem('usuario', respuesta);
+				sessionStorage.setItem('usuario', respuesta.cedula_usuario);
 	        	window.location.href = "../Inicio.jsp?rol="+respuesta.rol.rol;
 	        }
 	    });
