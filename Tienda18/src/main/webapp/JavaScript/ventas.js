@@ -47,6 +47,7 @@ $(document).ready(function(){
 			$("[id^='Consultar']").unbind();			//los unbind() sirven para borrar los eventos que tengan
 			$("[id^='cantidad_producto']").unbind();
 			inicializar();
+			resaltar();
 			perderFoco();
 			productos.push(0);
 	  });
@@ -259,40 +260,40 @@ $(document).ready(function(){
         	$("#toast_body").text("La venta se realizo exitosamente");
 			sessionStorage.removeItem('conf');
 		}
-/*
+
 		  function bordesTodos(){
-			  $('#texto_cedula').css('border-color', 'red'); 
-	   			$('#texto_nombre').css('border-color', 'red');
-	   			$('#texto_correo').css('border-color', 'red'); 
-	   			$('#texto_usuario').css('border-color', 'red');
-	   			$('#password').css('border-color', 'red');
+			  $('#cedula_cliente').css('border-color', 'red'); 
+	   			$("[id^='codigo_producto']").css('border-color', 'red');
+	   			$("[id^='cantidad_producto']").css('border-color', 'red'); 
+	   			
 		  }
 		  function resetTodos(){
 			  $('#texto_cedula').css('border-color', ''); 
- 				$('#texto_nombre').css('border-color', '');
- 				$('#texto_correo').css('border-color', ''); 
-	   			$('#texto_usuario').css('border-color', '');
-	   			$('#password').css('border-color', '');
+ 				$('#cedula_cliente').css('border-color', '');
+ 				$("[id^='codigo_producto']").css('border-color', ''); 
+	   			$("[id^='cantidad_producto']").css('border-color', '');
+	   			
 		  }
+			$('#confirmar').hover(function() { 
+	   			 bordesTodos();
+	   			}, function() { // on mouseout, reset the background colour 
+	   				 resetTodos();
+	   			}); 
+			//consultar cliente
 	   		$('#consultar').hover(function() { 
-	   			$('#texto_cedula').css('border-color', 'red'); 
+	   			$('#cedula_cliente').css('border-color', 'red'); 
 	   			}, function() { // on mouseout, reset the background colour 
-	   				$('#texto_cedula').css('border-color', ''); 
+	   				$('#cedula_cliente').css('border-color', ''); 
 	   			}); 
-		   	$('#crear').hover(function() { 
-	   			 bordesTodos();
-	   			}, function() { // on mouseout, reset the background colour 
-	   				 resetTodos();
-	   			}); 
-		   	$('#actualizar').hover(function() { 
-	   			 bordesTodos();
-	   			}, function() { // on mouseout, reset the background colour 
-	   				 resetTodos();
-	   			}); 
-		   	$('#borrar').hover(function() { 
-	   			$('#texto_cedula').css('border-color', 'red'); 
-	   			}, function() { // on mouseout, reset the background colour 
-	   				$('#texto_cedula').css('border-color', ''); 
-	   			});
-	*/
+			//Consultar producto
+			resaltar();
+			function resaltar(){
+				$("[id^='Consultar']").hover(function() { 
+					var elem = this.id.substring(9);
+		   			$('#codigo_producto'+elem).css('border-color', 'red'); 
+		   			}, function() { // on mouseout, reset the background colour 
+		   				$("[id^='codigo_producto']").css('border-color', ''); 
+		   			}); 
+			}
+			
 		});
