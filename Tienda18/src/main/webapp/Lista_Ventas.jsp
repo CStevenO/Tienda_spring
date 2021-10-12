@@ -29,16 +29,21 @@
         </tbody>
     </table>
     <!--Opcion 2 para mostrar las ventas totales-->
+    
     <table class="table">
         <thead class="table-dark">
-            <th scope="col" colspan="4">Total Ventas $</th> 
+            <tr>               
+                <th scope="col" colspan="4">Total Ventas $</th> 
+            </tr>
         </thead>
         <tbody id= "Tabla_total_ventas">
             <tr class="table-primary">
-                <td>500</td>
+                <td id="total"></td>
             </tr>
+
         </tbody>
     </table>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

@@ -15,14 +15,11 @@ var clientes = $.ajax({
 			columna4.innerHTML = item.direccion_cliente;
 			var columna5 = document.createElement("td");
 			columna5.innerHTML = item.telefono_cliente;
-			//var columna6 = document.createElement("td");
-			//columna6.innerHTML = item.rol.rol;
 			tr.appendChild(columna1);
 			tr.appendChild(columna2);
 			tr.appendChild(columna3);
 			tr.appendChild(columna4);
 			tr.appendChild(columna5);
-			//tr.appendChild(columna6);
 			lista.appendChild(tr);
 		});
 	}
