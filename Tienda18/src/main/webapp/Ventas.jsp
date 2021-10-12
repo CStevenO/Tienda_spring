@@ -9,7 +9,9 @@
     <title>Ventas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../JavaScript/ventas.js"></script>
 </head>
 
@@ -20,9 +22,9 @@
         <div class="container">
              <div class="row g-3 justify-content-center">
 	              <div class="col-md-4">
-	                  <label for="input_Cedula_Cliente" class="visually-hidden">Cedula Cliente</label>
+	                  <label for="input_Cedula_Cliente" class="visually-hidden">Cédula Cliente</label>
 	                  <input type="text" class="form-control" id="cedula_cliente"
-	                      placeholder="Cedula del Cliente" name="cedula_cliente">
+	                      placeholder="Cédula del Cliente" name="cedula_cliente">
 	              </div>
 	              <div class="col-auto">
 	                  <button type="button" class="btn btn-primary mb-3" id="consultar">Consultar</button>
@@ -40,8 +42,8 @@
              <div id="productosX">
 	             <div class="row g-3 justify-content-end" id="id"><br>
 	                     <div class="col-md-3">
-	                         <label for="input_Codigo_Producto" class="visually-hidden">Codigo Producto</label>
-	                         <input type="text" class="form-control" id="codigo_producto" placeholder="Codigo Producto" name="codigo_producto">
+	                         <label for="input_Codigo_Producto" class="visually-hidden">Código Producto</label>
+	                         <input type="text" class="form-control" id="codigo_producto" placeholder="Código Producto" name="codigo_producto">
 	                     </div>
 	                     <div class="col-md-2">
 	                         <button type="button" class="btn btn-primary mb-3" name="Consultar" id="Consultar">Consultar</button>
@@ -66,13 +68,13 @@
 		                  <button type="button" class="btn btn-primary mb-3" id="mas">+</button>
 	              	</div>
                      <div class="col-md-2">
-                         <label for="input_Valor_Total_Venta" class="visually-hidden">valor total venta</label>
+                         <label for="input_Valor_Total_Venta" class="visually-hidden">Valor total venta</label>
                          <input type="text" class="form-control" id="valor_total_venta" placeholder="Total Venta" name="valor_total_venta" disabled>
                      </div>
              </div>
              <div class="row g-3 justify-content-end"><br>
                      <div class="col-md-2">
-                         <label for="input_Total_IVA" class="visually-hidden">valor total IVA</label>
+                         <label for="input_Total_IVA" class="visually-hidden">Valor total IVA</label>
                          <input type="text" class="form-control" id="total_iva" placeholder="Total IVA" name="total_iva" disabled>
                      </div>
              </div>
@@ -82,7 +84,7 @@
                          <button type="button" class="btn btn-success mb-3" id="confirmar">Confirmar</button>
                      </div>
                      <div class="col-md-2">
-                         <label for="input_Totalcon_IVA" class="visually-hidden">valor total con IVA</label>
+                         <label for="input_Totalcon_IVA" class="visually-hidden">Valor total con IVA</label>
                          <input type="text" class="form-control" id="totalcon_iva" placeholder="Total con IVA" name="totalcon_iva" disabled>
                      </div>
              </div>

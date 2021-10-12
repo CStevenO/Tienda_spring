@@ -70,7 +70,7 @@ $(document).ready(function(){
 			        	console.log(respuesta);
 			            if(respuesta === null){
 			            	$('.toast').toast('show');
-			            	$("#strong").text("Consultar");
+			            	$("#strong").text("Consultar: ");
 			            	$("#small").text("Error al consultar");
 			            	$("#toast_body").text("Producto no existe.");
 			            }
@@ -257,7 +257,7 @@ $(document).ready(function(){
 			$('.toast').toast('show');
         	$("#strong").text("Crear");
         	$("#small").text("Error al crear");
-        	$("#toast_body").text("La venta se realizo exitosamente");
+        	$("#toast_body").text("La venta se realiza exitosamente");
 			sessionStorage.removeItem('conf');
 		}
 

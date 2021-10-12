@@ -30,11 +30,11 @@
 	            <input type="text" class="form-control" placeholder="Ingrese el Nombre del proveedor" name="texto_nombre_proveedor" id="nombre_proveedor" value="">
 	        </div>
 	        <div class="mb-3">
-	            <label for="texto_direccion" class="form-label">Direccion</label>
+	            <label for="texto_direccion" class="form-label">Dirección</label>
 	            <input type="text" class="form-control" placeholder="Ingrese Direccion del proveedor" name="texto_direccion_proveedor" id="direccion_proveedor" value="">
 	        </div>
 	        <div class="mb-3">
-	            <label for="texto_telefono" class="form-label">Telefono</label>
+	            <label for="texto_telefono" class="form-label">Teléfono</label>
 	            <input type="tel" class="form-control" placeholder="Ingrese Telefono del proveedor"name="texto_telefono_proveedor" id="telefono_proveedor" value="">
 	        </div>
 	        <div class="mb-3">

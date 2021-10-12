@@ -23,7 +23,7 @@
 <form id="from">
     <div class="container pt-3">
         <div class="mb-3">
-            <label for="texto_cedula" class="form-label">Cedula</label>
+            <label for="texto_cedula" class="form-label">Cédula</label>
             <input type="number" class="form-control" id="texto_cedula"
                 placeholder="Ingrese numero de documento de identidad" name="texto_cedula_cliente" value="">
         </div>
@@ -32,15 +32,15 @@
             <input type="text" class="form-control" id="texto_nombre" placeholder="Ingrese Nombres y apellidos del cliente" name="texto_nombre_cliente" value="">
         </div>
         <div class="mb-3">
-            <label for="texto_direccion" class="form-label">Direccion</label>
+            <label for="texto_direccion" class="form-label">Dirección</label>
             <input type="text" class="form-control" id="texto_direccion" placeholder="Ingrese Direccion del cliente" name="texto_direccion_cliente" value="">
         </div>
         <div class="mb-3">
-            <label for="texto_telefono" class="form-label">Telefono</label>
+            <label for="texto_telefono" class="form-label">Teléfono</label>
             <input type="tel" class="form-control" id="texto_telefono" placeholder="Ingrese Telefono del cliente" name="texto_telefono_cliente" value="">
         </div>
         <div class="mb-3">
-            <label for="texto_correo" class="form-label">Corrreo Electronico</label>
+            <label for="texto_correo" class="form-label">Correo Electrónico</label>
             <input type="email" class="form-control" id="texto_correo" placeholder="Ingrese Correo Electronico del cliente" name="texto_correo_cliente" value="">
         </div>
 

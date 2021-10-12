@@ -21,7 +21,7 @@
 	<form method="post" accept-charset="utf-8" id="form">
 	    <div class="container pt-3">
 	        <div class="mb-3">
-	            <label for="texto_cedula" class="form-label">Cedula</label>
+	            <label for="texto_cedula" class="form-label">Cédula</label>
 	            <input type="number" class="form-control" id="texto_cedula"
 	                placeholder="Ingrese numero de documento de identidad" name="texto_cedula" value="">
 	        </div>        

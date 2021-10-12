@@ -117,13 +117,13 @@ $(document).ready(function(){
 			        		$('.toast').toast('show');
 			            	$("#strong").text("Borrar");
 			            	$("#small").text("Error al borrar");
-			            	$("#toast_body").text("Cliente no se pudo borrar.");
+			            	$("#toast_body").text("Usuario no se puede borrar.");
 			        	}
 			        	else{
 				        	$('.toast').toast('show');
 			            	$("#strong").text("Borrar");
 			            	$("#small").text("Exito al borrar");
-			            	$("#toast_body").text("Usuario se borró exitosamente.");
+			            	$("#toast_body").text("Usuario borrado exitosamente.");
 				        }
 				    });
 				    request.fail(function(jqXHR, textStatus) {
