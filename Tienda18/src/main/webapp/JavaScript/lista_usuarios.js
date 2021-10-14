@@ -8,13 +8,13 @@ var usuarios = $.ajax({
 			var columna1 = document.createElement("td");
 			columna1.innerHTML = item.cedula_usuario;
 			var columna2 = document.createElement("td");
-			columna2.innerHTML = item.email_usuario;
+			columna2.innerHTML = item.nombre_usuario;
 			var columna3 = document.createElement("td");
-			columna3.innerHTML = item.nombre_usuario;
+			columna3.innerHTML = item.email_usuario;
 			var columna4 = document.createElement("td");
-			columna4.innerHTML = item.password;
+			columna4.innerHTML = item.usuario;
 			var columna5 = document.createElement("td");
-			columna5.innerHTML = item.usuario;
+			columna5.innerHTML = item.password;
 			//var columna6 = document.createElement("td");
 			//columna6.innerHTML = item.rol.rol;
 			tr.appendChild(columna1);
