@@ -22,26 +22,23 @@ var ventas = $.ajax({
 
 
 
-var ventas = $.ajax({
+var venta = $.ajax({
 	type: "GET",
 	url: "http://localhost:8080/ventas",
 	success: function(data){
-		$.each(data, function(x, item){
-			lista2 = document.getElementById("Tabla_total_ventas");				
 			var tr = document.createElement("tr");
-			var column1 = document.createElement("td");
-			var total=column1.innerHTML = item.total_venta;
-			window.alert(total);		
-		    //var suma=(parseFloat(total)+parseFloat(total));
-            var suma=+(parseFloat(total));
-            window.alert(suma); 
-            document.getElementById('total').innerHTML = suma;
-			tr.appendChild(column1);
-			//lista2.appendChild(tr);
-			
+			var column1 = document.createElement("td");	
+			lista2 = document.getElementById("Tabla_total_ventas");	
+			var suma=0;
+		$.each(data, function(x, item){						
+             suma+=(parseFloat(item.total_venta));             			
 		});
+		  document.getElementById('total').innerHTML = suma;
+		  tr.appendChild(column1);
+		  lista2.appendChild(tr);
 	}
 });
+
 
 
 
