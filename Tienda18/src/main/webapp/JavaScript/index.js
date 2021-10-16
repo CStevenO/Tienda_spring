@@ -8,7 +8,7 @@ $(document).ready(function(){
 	    });
 		  //el request con toda la informacion del lugar que se consultará
 	    var request = $.ajax({
-	        url: "http://localhost:8080/usuarios/login", 
+	        url: "http://localhost:8080/Tienda18/usuarios/login", 
 	        method: "post", 
 	        data: datos,
 	        dataType: "json",
@@ -21,7 +21,7 @@ $(document).ready(function(){
 	        }
 	        else{
 				sessionStorage.setItem('usuario', respuesta.cedula_usuario);
-	        	window.location.href = "../Inicio.jsp?rol="+respuesta.rol.rol;
+	        	window.location.href = "./Inicio.jsp?rol="+respuesta.rol.rol;
 	        }
 	    });
 		  //en caso de que el requerimiento falle

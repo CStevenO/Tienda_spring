@@ -1,6 +1,6 @@
 var usuarios = $.ajax({
 	type: "GET",
-	url: "http://localhost:8080/usuarios/listar_usuarios",
+	url: "http://localhost:8080/Tienda18/usuarios/listar_usuarios",
 	success: function(data){
 		$.each(data, function(i, item){
 			lista = document.getElementById("Tabla_lista_usuarios");				

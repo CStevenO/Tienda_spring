@@ -24,55 +24,55 @@
 	if(rol==1){
 	%>
 	<div class="card">
-        <img src="../img/usuario1.png" class="img-centro-vert-hor" alt="...">
+        <img src="./img/usuario1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="button" class="btn btn-outline-primary btn-lg" style="margin-right: 400px;" onclick="location.href='../Usuarios.jsp'">Usuarios</button>
+                <button type="button" class="btn btn-outline-primary btn-lg" style="margin-right: 400px;" onclick="location.href='./Usuarios.jsp'">Usuarios</button>
             </div>
         </div>
     </div>
           
     <div class="card">
-        <img src="../img/clientes1.png" class="img-centro-vert-hor" alt="...">
+        <img src="./img/clientes1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="button" class="btn btn-outline-secondary btn-lg" style="margin-left: 400px;" onclick="location.href='../Clientes.jsp'">Clientes</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg" style="margin-left: 400px;" onclick="location.href='./Clientes.jsp'">Clientes</button>
             </div>
         </div>
     </div>
              
     <div class="card">
-        <img src="../img/proveedores1.png" class="img-centro-vert-hor" alt="...">
+        <img src="./img/proveedores1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="button" class="btn btn-outline-success btn-lg" style="margin-right: 400px;" onclick="location.href='../Proveedores.jsp'">Proveedores</button>
+                <button type="button" class="btn btn-outline-success btn-lg" style="margin-right: 400px;" onclick="location.href='./Proveedores.jsp'">Proveedores</button>
             </div>
         </div>
     </div>
 
     <div class="card">
-        <img src="../img/productos1.png" class="img-centro-vert-hor" alt="...">
+        <img src="./img/productos1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto" >
-                <button type="button" class="btn btn-outline-danger btn-lg" style="margin-left: 400px;" onclick="location.href='../Productos.jsp'">Productos</button>
+                <button type="button" class="btn btn-outline-danger btn-lg" style="margin-left: 400px;" onclick="location.href='./Productos.jsp'">Productos</button>
             </div>
         </div>
     </div>
 	<%} %>
     <div class="card">
-        <img src="../img/compras1.png" class="img-centro-vert-hor" alt="...">
+        <img src="./img/compras1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto" >
-                <button type="button" class="btn btn-outline-info btn-lg" style="margin-right: 400px" onclick="location.href='../Ventas.jsp'">Ventas</button>
+                <button type="button" class="btn btn-outline-info btn-lg" style="margin-right: 400px" onclick="location.href='./Ventas.jsp'">Ventas</button>
             </div>
         </div>
     </div>
 
     <div class="card">
-        <img src="../img/reportes1.png" class="img-centro-vert-hor" alt="...">
+        <img src="./img/reportes1.png" class="img-centro-vert-hor" alt="...">
         <div class=" card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto"> 
-                <button type="button" class="btn btn-outline-dark btn-lg" style="margin-left: 400px" onclick="location.href='../Reportes.jsp'">Reportes</button>
+                <button type="button" class="btn btn-outline-dark btn-lg" style="margin-left: 400px" onclick="location.href='./Reportes.jsp'">Reportes</button>
             </div>
         </div>
     </div>

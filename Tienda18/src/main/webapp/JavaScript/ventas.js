@@ -4,7 +4,7 @@ $(document).ready(function(){
 	function GenConsec(){
 		var consec = 1;
 		var request = $.ajax({
-		            url: "http://localhost:8080/ventas",
+		            url: "http://localhost:8080/Tienda18/ventas",
 		            method: "get",
 		            dataType: "json",
 		            contentType:'application/json'
@@ -61,7 +61,7 @@ $(document).ready(function(){
 				}
 				if($("#codigo_producto"+elem).val() !== ""){
 					var request = $.ajax({
-			            url: "http://localhost:8080/productos/" + $("#codigo_producto"+elem).val(),
+			            url: "http://localhost:8080/Tienda18/productos/" + $("#codigo_producto"+elem).val(),
 			            method: "get",
 			            dataType: "json",
 			            contentType:'application/json'
@@ -147,7 +147,7 @@ $(document).ready(function(){
 		//CONSULTAR cliente	por Id
 	  $("#consultar").click(function(){
 			var request = $.ajax({
-	            url: "http://localhost:8080/clientes/" + $("#cedula_cliente").val(),
+	            url: "http://localhost:8080/Tienda18/clientes/" + $("#cedula_cliente").val(),
 	            method: "get",
 	            dataType: "json",
 	            contentType:'application/json'
@@ -183,7 +183,7 @@ $(document).ready(function(){
 					"usuario": {"cedula_usuario": parseInt(usuario)}
 			    });
 				var request = $.ajax({
-		            url: "http://localhost:8080/ventas",
+		            url: "http://localhost:8080/Tienda18/ventas",
 		            method: "post",
 					data: datos,
 		            dataType: "json",
@@ -219,7 +219,7 @@ $(document).ready(function(){
 						}
 						var datos = JSON.stringify(detalle);
 						var request = $.ajax({
-				            url: "http://localhost:8080/DetalleVentas/Todos",
+				            url: "http://localhost:8080/Tienda18/DetalleVentas/Todos",
 				            method: "post",
 							data: datos,
 				            dataType: "json",
@@ -234,7 +234,7 @@ $(document).ready(function(){
 				            }
 				            else{
 								sessionStorage.setItem('conf', true);
-								window.location.href = "../Ventas.jsp";
+								window.location.href = "./Ventas.jsp";
 				            }
 						});
 						request.fail(function(jqXHR, textStatus) {

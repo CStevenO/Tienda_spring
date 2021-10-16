@@ -1,6 +1,6 @@
 var usuarios = $.ajax({
 	type: "GET",
-	url: "http://localhost:8080/productos",
+	url: "http://localhost:8080/Tienda18/productos",
 	success: function(data){
 		$.each(data, function(i, item){
 			lista = document.getElementById("myTable");				
@@ -36,7 +36,7 @@ $(document).ready(function(){
 		  var form = new FormData();
 		  form.append("file", $("#archivo")[0].files[0]);
 			var request = $.ajax({
-	            url: "http://localhost:8080/productos",
+	            url: "http://localhost:8080/Tienda18/productos",
 	            method: "post",
 	            data: form,
 	            dataType: "json",
@@ -47,7 +47,7 @@ $(document).ready(function(){
 			request.done(function(respuesta) {
 	            if(respuesta.message ==="Carga del archivo exitosa"){
 	            	sessionStorage.setItem('exito', true);
-	            	window.location.href= "../Productos.jsp";
+	            	window.location.href= "./Productos.jsp";
 	            }
 	            else{
 	            	$('.toast').toast('show');

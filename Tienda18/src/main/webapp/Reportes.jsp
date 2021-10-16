@@ -17,9 +17,9 @@
     <div class="container-fluid w-100 mt-auto rounded">
 
         <div class="d-grid gap-4 col-8 mx-auto mt-5">
-            <a href="../Lista_Usuarios.jsp"   class="btn btn-outline-primary btn-lg" type="button" id="boton_lista_usuarios" name="boton_lista_usuarios">Listado de Usuarios</a>
-            <a href="../Lista_Clientes.jsp" class="btn btn-outline-info btn-lg"    type="button" id="boton_lista_cliente" name="boton_lista_cliente">Listado de Clientes</a>
-            <a href="../Lista_Ventas.jsp" class="btn btn-outline-success btn-lg" type="button" id="boton_ventas_cliente" name="boton_ventas_cliente">Ventas por Cliente</a>
+            <a href="./Lista_Usuarios.jsp"   class="btn btn-outline-primary btn-lg" type="button" id="boton_lista_usuarios" name="boton_lista_usuarios">Listado de Usuarios</a>
+            <a href="./Lista_Clientes.jsp" class="btn btn-outline-info btn-lg"    type="button" id="boton_lista_cliente" name="boton_lista_cliente">Listado de Clientes</a>
+            <a href="./Lista_Ventas.jsp" class="btn btn-outline-success btn-lg" type="button" id="boton_ventas_cliente" name="boton_ventas_cliente">Ventas por Cliente</a>
         </div>
     </div>
 
