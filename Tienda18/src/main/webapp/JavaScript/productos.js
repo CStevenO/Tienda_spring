@@ -47,7 +47,7 @@ $(document).ready(function(){
 			request.done(function(respuesta) {
 	            if(respuesta.message ==="Carga del archivo exitosa"){
 	            	sessionStorage.setItem('exito', true);
-	            	window.location.href= "./Productos.jsp";
+	            	window.location.href= "./Productos.jsp?img=productos1";
 	            }
 	            else{
 	            	$('.toast').toast('show');

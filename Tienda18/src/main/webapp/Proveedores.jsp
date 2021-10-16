@@ -18,6 +18,19 @@
 </head>
 <body>
 	<jsp:include page="Menu.jsp"></jsp:include>
+	<%try{
+		int rol = (int)session.getAttribute("rol");
+		if(rol!=1){
+			%>
+			<script>window.location.href = "./SinPermiso.jsp?img=proveedores1";
+			</script>
+			<%
+		}
+	}
+	catch(Exception e){
+		
+	}
+	%>
 	<form id="from">
 		<div class="container pt-3">
 	        <div class="mb-3">

@@ -15,6 +15,19 @@
 
 <body>
 <jsp:include page="Menu.jsp"></jsp:include>
+<%try{
+	int rol = (int)session.getAttribute("rol");
+	if(rol!=1){
+		%>
+		<script>window.location.href = "./SinPermiso.jsp?img=productos1";
+		</script>
+		<%
+	}
+}
+catch(Exception e){
+	
+}
+%>
 	<div align='center'>
 		<div class="toast">
 	    	<div class="toast-header">

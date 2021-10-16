@@ -1,12 +1,20 @@
 <%
-int rol = (int)session.getAttribute("rol");
+int rol=0;
+try{
+	rol = (int)session.getAttribute("rol");
+}
+catch(Exception e){
+	%>
+	<script>window.location.href = "./Index.html";
+	</script>
+	<%
+}
 %>
-
 <main>
     <nav class="navbar navbar-expand-md navbar-light"
         style="background: linear-gradient(to right, #51ceff, #5980ff);" aria-label="Fourth navbar example">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"> <img src="../Tienda/img/ponerimagendelogo" alt="" width="30" height="24"> Tienda de
+            <a class="navbar-brand" href="#"> <img src="./img/<%=request.getParameter("img")%>.png" alt="" width="30" height="24"> Tienda de
                 Viveres</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
@@ -23,23 +31,23 @@ int rol = (int)session.getAttribute("rol");
                 	if(rol == 1){
                 	%>
 	                    <li class="nav-item">
-	                        <a class="nav-link active" href="./Usuarios.jsp">Usuarios</a>
+	                        <a class="nav-link active" href="./Usuarios.jsp?img=usuario1">Usuarios</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link active" href="./Clientes.jsp">Clientes</a>
+	                        <a class="nav-link active" href="./Clientes.jsp?img=clientes1">Clientes</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link active" href="./Proveedores.jsp">Proveedores</a>
+	                        <a class="nav-link active" href="./Proveedores.jsp?img=proveedores1">Proveedores</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link active" href="./Productos.jsp">Productos</a>
+	                        <a class="nav-link active" href="./Productos.jsp?img=productos1">Productos</a>
 	                    </li>
                     <% }%>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./Ventas.jsp">Ventas</a>
+                        <a class="nav-link active" href="./Ventas.jsp?img=compras1">Ventas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./Reportes.jsp">Reportes</a>
+                        <a class="nav-link active" href="./Reportes.jsp?img=reportes1">Reportes</a>
                     </li>
                 </ul>
             </div>

@@ -8,18 +8,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Menu</title>
 </head>
 <body class="bg_body">
 	<%
-	int rol;
+	int rol=0;
 	if(request.getParameter("rol")==null){
-		rol = (int)session.getAttribute("rol");
+		try{
+			rol = (int)session.getAttribute("rol");
+		}
+		catch(Exception e){
+			response.sendRedirect("./Index.html");	
+		}
 	}
 	else{
-		rol = Integer.parseInt(request.getParameter("rol"));
-		session.setAttribute("rol", rol);
+		try{
+			rol = Integer.parseInt(request.getParameter("rol"));
+			session.setAttribute("rol", rol);
+		}
+		catch(Exception e){
+			response.sendRedirect("./Index.html");	
+		}
 	}
 	if(rol==1){
 	%>
@@ -27,7 +36,7 @@
         <img src="./img/usuario1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="button" class="btn btn-outline-primary btn-lg" style="margin-right: 400px;" onclick="location.href='./Usuarios.jsp'">Usuarios</button>
+                <button type="button" class="btn btn-outline-primary btn-lg" style="margin-right: 400px;" onclick="location.href='./Usuarios.jsp?img=usuario1'">Usuarios</button>
             </div>
         </div>
     </div>
@@ -36,7 +45,7 @@
         <img src="./img/clientes1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="button" class="btn btn-outline-secondary btn-lg" style="margin-left: 400px;" onclick="location.href='./Clientes.jsp'">Clientes</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg" style="margin-left: 400px;" onclick="location.href='./Clientes.jsp?img=clientes1'">Clientes</button>
             </div>
         </div>
     </div>
@@ -45,7 +54,7 @@
         <img src="./img/proveedores1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="button" class="btn btn-outline-success btn-lg" style="margin-right: 400px;" onclick="location.href='./Proveedores.jsp'">Proveedores</button>
+                <button type="button" class="btn btn-outline-success btn-lg" style="margin-right: 400px;" onclick="location.href='./Proveedores.jsp?img=proveedores1'">Proveedores</button>
             </div>
         </div>
     </div>
@@ -54,7 +63,7 @@
         <img src="./img/productos1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto" >
-                <button type="button" class="btn btn-outline-danger btn-lg" style="margin-left: 400px;" onclick="location.href='./Productos.jsp'">Productos</button>
+                <button type="button" class="btn btn-outline-danger btn-lg" style="margin-left: 400px;" onclick="location.href='./Productos.jsp?img=productos1'">Productos</button>
             </div>
         </div>
     </div>
@@ -63,7 +72,7 @@
         <img src="./img/compras1.png" class="img-centro-vert-hor" alt="...">
         <div class="card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto" >
-                <button type="button" class="btn btn-outline-info btn-lg" style="margin-right: 400px" onclick="location.href='./Ventas.jsp'">Ventas</button>
+                <button type="button" class="btn btn-outline-info btn-lg" style="margin-right: 400px" onclick="location.href='./Ventas.jsp?img=compras1'">Ventas</button>
             </div>
         </div>
     </div>
@@ -72,7 +81,7 @@
         <img src="./img/reportes1.png" class="img-centro-vert-hor" alt="...">
         <div class=" card-body bg_body">
             <div class="d-grid gap-2 col-6 mx-auto"> 
-                <button type="button" class="btn btn-outline-dark btn-lg" style="margin-left: 400px" onclick="location.href='./Reportes.jsp'">Reportes</button>
+                <button type="button" class="btn btn-outline-dark btn-lg" style="margin-left: 400px" onclick="location.href='./Reportes.jsp?img=reportes1'">Reportes</button>
             </div>
         </div>
     </div>
