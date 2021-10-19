@@ -9,6 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
+    <script type="text/javascript">
+    	var usuario = sessionStorage.getItem('usuario');
+    	if(usuario == null){
+    		window.location.href = "./Index.html";
+    	}
+    </script>
 </head>
 <body class="bg_body">
 	<%
