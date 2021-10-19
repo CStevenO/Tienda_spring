@@ -10,7 +10,7 @@ $(document).ready(function(){
 	        });
 			  //el request con toda la informacion del lugar que se consultará
 	        var request = $.ajax({
-	            url: "http://localhost:8080/Tienda18/clientes",
+	            url: "./clientes",
 	            method: "post",
 	            data: datos,
 	            dataType: "json",
@@ -47,7 +47,7 @@ $(document).ready(function(){
             	$("#toast_body").text("Por favor llene cedula");
 		}else{
 	        var request = $.ajax({
-		        url: "http://localhost:8080/Tienda18/clientes/" + $("#texto_cedula").val() ,
+		        url: "./clientes/" + $("#texto_cedula").val() ,
 		        method: "get",
 		        dataType: "json",
 		        contentType:'application/json'
@@ -107,7 +107,7 @@ $(document).ready(function(){
 	            	$("#toast_body").text("Por favor llene cedula");
 			}else{
 					var request = $.ajax({
-					            url: "http://localhost:8080/Tienda18/clientes/"+ $("#texto_cedula").val() ,
+					            url: "./clientes/"+ $("#texto_cedula").val() ,
 					            method: "delete",
 					            dataType: "text",
 					            contentType:'application/json'

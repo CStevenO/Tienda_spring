@@ -8,7 +8,7 @@ $(document).ready(function(){
         	"ciudad_proveedor": $("#ciudad_proveedor").val()
         });
         var request = $.ajax({
-            url: "http://localhost:8080/Tienda18/proveedores", 
+            url: "./proveedores", 
             method: "post", 
             data: datos,
             dataType: "json",
@@ -41,7 +41,7 @@ $(document).ready(function(){
             	$("#toast_body").text("Por favor ingrese NIT");
 		}else{
 	        var request = $.ajax({
-	            url: "http://localhost:8080/Tienda18/proveedores/" + $("#nit_proveedor").val(), 
+	            url: "./proveedores/" + $("#nit_proveedor").val(), 
 	            method: "get", 
 	            dataType: "json",
 	            contentType:'application/json'
@@ -99,7 +99,7 @@ $(document).ready(function(){
 	            	$("#toast_body").text("Por favor ingrese el NIT");
 		}else{
 	        var request = $.ajax({
-	            url: "http://localhost:8080/Tienda18/proveedores/" + $("#nit_proveedor").val(), 
+	            url: "./proveedores/" + $("#nit_proveedor").val(), 
 	            method: "delete", 
 	            dataType: "text",
 	            contentType:'application/json'

@@ -1,6 +1,6 @@
 var ventas = $.ajax({
 	type: "GET",
-	url: "http://localhost:8080/Tienda18/ventas",
+	url: "./ventas",
 	success: function(data){
 		$.each(data, function(i, item){
 			lista = document.getElementById("Tabla_lista_ventas");				
@@ -24,7 +24,7 @@ var ventas = $.ajax({
 
 var venta = $.ajax({
 	type: "GET",
-	url: "http://localhost:8080/Tienda18/ventas",
+	url: "./ventas",
 	success: function(data){
 			var tr = document.createElement("tr");
 			var column1 = document.createElement("td");	

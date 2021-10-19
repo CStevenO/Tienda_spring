@@ -8,7 +8,7 @@ $(document).ready(function(){
 	    });
 		  //el request con toda la informacion del lugar que se consultará
 	    var request = $.ajax({
-	        url: "http://localhost:8080/Tienda18/usuarios/login", 
+	        url: "./usuarios/login", 
 	        method: "post", 
 	        data: datos,
 	        dataType: "json",
