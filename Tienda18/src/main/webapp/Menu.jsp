@@ -1,3 +1,9 @@
+<script type="text/javascript">
+    	var usuario = sessionStorage.getItem('usuario');
+    	if(usuario == null){
+    		window.location.href = "./Index.html";
+    	}
+    </script>
 <%
 int rol=0;
 try{
